@@ -1,0 +1,31 @@
+@use '@/shared/styles/variables.scss' as *;
+
+.title{
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 100%;
+  text-align: center;
+  color: $color-white; 
+ 
+  margin-top: 141px;
+  margin-bottom: 0;
+}
+.infoBlock{
+  max-width: 364px;
+  margin: 0 auto 33px;
+  p{
+    color: $color-white; 
+    font-size: 40px;
+    font-weight: 700;
+  }
+  
+  h3{
+    color: $color-white; 
+    font-size: 24px;
+    font-weight: 400;
+  }
+}
+.infoWrapper{
+  margin-top: 227px;
+  margin-bottom: 214px;
+}

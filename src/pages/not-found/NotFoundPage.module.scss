@@ -1,0 +1,13 @@
+@use '@/shared/styles/variables.scss' as *;
+
+.notFound{
+  
+ margin-top: 60px;
+ font-size: 20px;
+  h1{
+    text-align: center;
+    color: $color-white; 
+    width: 370px;
+    margin: 0 auto;
+  }
+}
