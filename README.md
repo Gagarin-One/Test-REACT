@@ -23,8 +23,10 @@ npm run dev
 
 # Продакшен сборка
 npm run build
+
 npm run preview
-(Требуется Node.js >= 20.19 (установлено через nvm/Homebrew для M1/M2 Mac))
+
+(Требуется Node.js >= 20.19 )
 
 --------
 
