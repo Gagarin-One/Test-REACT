@@ -1,73 +1,90 @@
-# React + TypeScript + Vite
+# Тестовое Olimob
+Стек
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- React + TypeScript
 
-Currently, two official plugins are available:
+- React Router 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Zustand 
 
-## React Compiler
+- FSD архитектура
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- SCSS / CSS Modules
 
-## Expanding the ESLint configuration
+- Vite
+-------
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Запуск проекта
+# Установить зависимости
+npm install
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+# Локальный запуск
+npm run dev
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+# Продакшен сборка
+npm run build
+npm run preview
+(Требуется Node.js >= 20.19 (установлено через nvm/Homebrew для M1/M2 Mac))
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+--------
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Страницы
+1. /login
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Поля name, email, password с валидацией:
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+name > 3 символов
+
+email содержит @gmail.com
+
+password > 5 символов и минимум 1 спец.символ
+
+Валидация в реальном времени, ошибки показываются после начала ввода
+
+Кнопка Login активна только при корректных данных
+
+Имитация загрузки 2–3 секунды (Loading…) с блокировкой формы
+
+После логина данные сохраняются в Zustand и редирект на /profile
+
+2. /profile
+
+Данные берутся из Zustand
+
+Кнопка Logout очищает стор и редиректит на /login
+
+3. /not-found (опционально)
+
+Любой несуществующий роут ведет на страницу 404
+
+Приватность
+
+/profile доступен только авторизованному пользователю
+
+/login доступен только неавторизованному
+
+Реализовано через ProtectedRoute
+
+Дизайн и стили
+
+Pixel-perfect по макету Figma
+
+Кастомный шрифт Akt подключен глобально через @font-face
+
+Инпуты прозрачные с белыми границами
+
+Валидационные ошибки красные, показываются под полем
+
+Адаптивность для всех экранов
+
+Минимальный контент не адаптируется на экранах < 360px
+
+Фон с двумя блюр-кругами на всех страницах через PageLayout
+-------
+
+
+- Деплой
+
+Vercel: https://test-react-jade.vercel.app/
+
+Время выполнения: с настройкой и деплоем ~ 4 часа
